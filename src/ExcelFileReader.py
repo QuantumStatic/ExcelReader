@@ -299,6 +299,10 @@ class ExcelFileReader:
         self._current_worksheet.move_range(
             cell_range=total_cols_shift_str, columns=distance_from_last_col+1)
 
+        # Special case for the last column
+        if distance_from_last_col == 0 and amount > 0:
+            return
+
         if amount > 0:
             other_cols_shift_beg = convert_cell(
                 col=end_col_int + 1, return_type=str)
