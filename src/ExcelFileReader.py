@@ -295,9 +295,9 @@ class ExcelFileReader:
             total_cols_shift_str, total_cols_shift_int = f"{total_cols_shift_str.split(':')[0]}:{self._full_col(end_col_str).split(':'[1])}", end_col_int - \
                 start_col_int + 1
 
-        distance_from_last_col = self._current_worksheet.max_column - start_col_int
+        distance_from_last_col = self._current_worksheet.max_column - end_col_int
         self._current_worksheet.move_range(
-            cell_range=total_cols_shift_str, columns=distance_from_last_col+1)
+            cell_range=total_cols_shift_str, columns=distance_from_last_col+amount)
 
         # Special case for the last column
         if distance_from_last_col == 0 and amount > 0:
